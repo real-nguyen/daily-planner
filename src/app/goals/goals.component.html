@@ -1,7 +1,7 @@
 <ul>
   <li *ngFor="let goal of goals">
-    <input type="checkbox" [(ngModel)]="goal.done" (checked)="onCheck($event)">
-    <span class="goal">{{ goal.goal }}</span>
+    <input type="checkbox" [(ngModel)]="goal.done" (change)="onCheck($event, goal.id)">
+    <span class="goal" [ngClass]="{'done' : goal.done}">{{ goal.goal }}</span>
   </li>
   <form #goalForm="ngForm" (submit)="addGoal(goalForm)">
     <li>

@@ -34,3 +34,20 @@ exports.addGoal = (req, res, next) => {
     });
   });
 };
+
+exports.markDone = (req, res, next) => {
+  Goal.updateOne({ _id: req.params.id }, { done: req.body.done })
+  .then(result => {
+    if (result.n > 0) {
+      console.log('Goal updated.');
+      res.status(200);
+    } else {
+      console.log('Could not update goal.');
+    }
+  })
+  .catch(error => {
+    res.status(500).json({
+      message: 'Could not update goal:' + error
+    });
+  });
+};

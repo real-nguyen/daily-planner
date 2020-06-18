@@ -29,13 +29,9 @@ export class GoalsComponent implements OnInit, OnDestroy {
     this.goalsSub.unsubscribe();
   }
 
-  onCheck(event: Event) {
+  onCheck(event: Event, id: string) {
     const isChecked = (event.target as HTMLInputElement).checked;
-    if (isChecked) {
-
-    } else {
-
-    }
+    this.goalsService.markDone(id, isChecked);
   }
 
   onAddClick() {

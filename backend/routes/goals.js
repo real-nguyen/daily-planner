@@ -8,4 +8,6 @@ router.get('', GoalsController.fetchGoals);
 
 router.post('', GoalsController.addGoal);
 
+router.put('/:id', GoalsController.markDone);
+
 module.exports = router;

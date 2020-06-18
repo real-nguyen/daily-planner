@@ -60,6 +60,10 @@ export class GoalsService {
       this.goalsObservable.next({
         goals: [...this.goals]
       });
-    })
+    });
+  }
+
+  markDone(id: string, checked: boolean) {
+    this.http.put(BACKEND_URL + '/' + id, { done: checked }).subscribe();
   }
 }
