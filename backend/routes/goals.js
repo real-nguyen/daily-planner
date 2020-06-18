@@ -6,4 +6,6 @@ const router = express.Router();
 
 router.get('', GoalsController.fetchGoals);
 
+router.post('', GoalsController.addGoal);
+
 module.exports = router;

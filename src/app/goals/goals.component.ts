@@ -3,6 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Goal } from '../models/goal.model';
 import { Subscription } from 'rxjs';
 import { GoalsService } from './goals.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-goals',
@@ -11,6 +12,7 @@ import { GoalsService } from './goals.service';
 })
 export class GoalsComponent implements OnInit, OnDestroy {
   goals: Goal[];
+  editMode = false;
   private goalsSub: Subscription;
 
   constructor(private goalsService: GoalsService) { }
@@ -19,7 +21,7 @@ export class GoalsComponent implements OnInit, OnDestroy {
     this.goalsService.fetchGoals();
     this.goalsSub = this.goalsService.getGoalsObservable()
     .subscribe((data: {goals: Goal[]}) => {
-      this.goals = data.goals
+      this.goals = data.goals;
     });
   }
 
@@ -34,5 +36,23 @@ export class GoalsComponent implements OnInit, OnDestroy {
     } else {
 
     }
+  }
+
+  onAddClick() {
+    this.editMode = true;
+  }
+
+  addGoal(form: NgForm) {
+    if (form.invalid) {
+      return;
+    }
+    this.goalsService.addGoal(form.value.goal);
+    form.reset();
+    this.editMode = false;
+  }
+
+  cancel(form: NgForm) {
+    form.reset();
+    this.editMode = false;
   }
 }

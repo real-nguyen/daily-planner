@@ -35,12 +35,31 @@ export class GoalsService {
         }
       })
     )
-    .subscribe(data => {
-      console.log(data);
-      this.goals = data.goals;
+    .subscribe(res => {
+      console.log(res);
+      this.goals = res.goals;
       this.goalsObservable.next({
         goals: [...this.goals]
       });
     });
+  }
+
+  addGoal(goal: string) {
+    const data = {
+      goal: goal,
+      done: false
+    };
+    this.http.post<{ id: string, goal: string, done: boolean }>(BACKEND_URL, data)
+    .subscribe(res => {
+      const transformedGoal = {
+        id: res.id,
+        goal: res.goal,
+        done: res.done
+      };
+      this.goals.push(transformedGoal);
+      this.goalsObservable.next({
+        goals: [...this.goals]
+      });
+    })
   }
 }

@@ -3,7 +3,14 @@
     <input type="checkbox" [(ngModel)]="goal.done" (checked)="onCheck($event)">
     <span class="goal">{{ goal.goal }}</span>
   </li>
-  <li>
-    <button>+ Add</button>
-  </li>
+  <form #goalForm="ngForm" (submit)="addGoal(goalForm)">
+    <li>
+      <button (click)="onAddClick()" *ngIf="!editMode">+ Add</button>
+      <input type="text" name="goal" ngModel *ngIf="editMode" placeholder="What is your goal?"/>
+    </li>
+    <li *ngIf="editMode">
+      <button type="submit">Add</button>
+      <button (click)="cancel(goalForm)">Cancel</button>
+    </li>
+  </form>
 </ul>
