@@ -1,24 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { Goal } from '../models/goal.model';
+import { Subscription } from 'rxjs';
+import { GoalsService } from './goals.service';
 
 @Component({
   selector: 'app-goals',
   templateUrl: './goals.component.html',
   styleUrls: ['./goals.component.scss']
 })
-export class GoalsComponent implements OnInit {
+export class GoalsComponent implements OnInit, OnDestroy {
   goals: Goal[];
+  private goalsSub: Subscription;
 
-  constructor() { }
+  constructor(private goalsService: GoalsService) { }
 
   ngOnInit() {
-    const dummyList = [
-      {goal: 'Do this', done: true},
-      {goal: 'Then do that', done: false},
-      {goal: 'And finish', done: false}
-    ];
-    this.goals = dummyList;
+    this.goalsService.fetchGoals();
+    this.goalsSub = this.goalsService.getGoalsObservable()
+    .subscribe((data: {goals: Goal[]}) => {
+      this.goals = data.goals
+    });
+  }
+
+  ngOnDestroy() {
+    this.goalsSub.unsubscribe();
   }
 
   onCheck(event: Event) {
