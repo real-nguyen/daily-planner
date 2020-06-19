@@ -10,4 +10,6 @@ router.post('', GoalsController.addGoal);
 
 router.put('/:id', GoalsController.markDone);
 
+router.delete('/:id', GoalsController.deleteGoal);
+
 module.exports = router;

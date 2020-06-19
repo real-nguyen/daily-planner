@@ -66,4 +66,9 @@ export class GoalsService {
   markDone(id: string, checked: boolean) {
     this.http.put(BACKEND_URL + '/' + id, { done: checked }).subscribe();
   }
+
+  deleteGoal(id: string) {
+    // Return observable so that component can fetch goals again on subscription
+    return this.http.delete(BACKEND_URL + '/' + id);
+  }
 }

@@ -40,7 +40,7 @@ exports.markDone = (req, res, next) => {
   .then(result => {
     if (result.n > 0) {
       console.log('Goal updated.');
-      res.status(200);
+      res.status(200).json({message: 'Goal updated.'});
     } else {
       console.log('Could not update goal.');
     }
@@ -48,6 +48,24 @@ exports.markDone = (req, res, next) => {
   .catch(error => {
     res.status(500).json({
       message: 'Could not update goal:' + error
+    });
+  });
+};
+
+exports.deleteGoal = (req, res, next) => {
+  Goal.deleteOne({ _id: req.params.id })
+  .then(result => {
+    console.log(result);
+    if (result.n > 0) {
+      console.log('Goal deleted.');
+      res.status(200).json({message: 'Goal deleted.'});
+    } else {
+      console.log('Could not delete goal.');
+    }
+  })
+  .catch(error => {
+    res.status(500).json({
+      message: 'Could not delete goal: ' + error
     });
   });
 };

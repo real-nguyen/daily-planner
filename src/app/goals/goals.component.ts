@@ -51,4 +51,10 @@ export class GoalsComponent implements OnInit, OnDestroy {
     form.reset();
     this.editMode = false;
   }
+
+  deleteGoal(id: string) {
+    this.goalsService.deleteGoal(id).subscribe(() => {
+      this.goalsService.fetchGoals();
+    });
+  }
 }
