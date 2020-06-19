@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { GoalsComponent } from './goals/goals.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TasksComponent } from './tasks/tasks.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    GoalsComponent
+    GoalsComponent,
+    TasksComponent
   ],
   imports: [
     BrowserModule,

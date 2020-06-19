@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const goalsRoute = require('./routes/goals');
+const tasksRoute = require('./routes/tasks');
 
 mongoose.connect(
   'mongodb://localhost/daily-planner',
@@ -40,5 +41,6 @@ app.use((req, res, next) => {
 
 // Forward routes
 app.use('/api/goals', goalsRoute);
+app.use('/api/tasks', tasksRoute);
 
 module.exports = app;

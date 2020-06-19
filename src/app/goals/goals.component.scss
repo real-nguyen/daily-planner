@@ -19,6 +19,8 @@ li {
   }
 }
 
-li:hover button.delete-goal {
-  visibility: visible;
+li:hover {
+  button.delete-goal{
+    visibility: visible;
+  }
 }
