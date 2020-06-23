@@ -46,3 +46,20 @@ exports.fetchTasks = (req, res, next) => {
     });
   });
 };
+
+exports.markDone = (req, res, next) => {
+  Task.updateOne({ _id: req.params.id }, { done: req.body.done })
+  .then(result => {
+    if (result.n > 0) {
+      console.log('Task updated.');
+      res.status(200).json({message: 'Task updated.'});
+    } else {
+      console.log('Could not update task.');
+    }
+  })
+  .catch(error => {
+    res.status(500).json({
+      message: 'Could not update task:' + error
+    });
+  });
+};

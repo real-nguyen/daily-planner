@@ -54,6 +54,10 @@ export class TasksService {
     });
   }
 
+  markDone(id: string, checked: boolean) {
+    this.http.put(BACKEND_URL + '/' + id, { done: checked }).subscribe();
+  }
+
   getPriorityTasksObservable() {
     return this.priorityTasksObservable.asObservable();
   }

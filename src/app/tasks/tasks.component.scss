@@ -1,11 +1,22 @@
+ul {
+  width: 25%;
+}
+
 li {
+  span.task {
+    flex: 2;
+    padding-left: 1rem;
+  }
+
   button.delete-task {
     visibility: hidden;
   }
+}
 
-  .new-line {
-    padding-bottom: 10px;
-  }
+li.task-flex-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 li:hover {

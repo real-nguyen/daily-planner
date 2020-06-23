@@ -1,5 +1,5 @@
 <ul>
-  <li *ngFor="let goal of goals">
+  <li *ngFor="let goal of goals" class="goal-flex-container">
     <input type="checkbox" [(ngModel)]="goal.done" (change)="onCheck($event, goal.id)">
     <span class="goal" [ngClass]="{'done' : goal.done}">{{ goal.goal }}</span>
     <button class="delete-goal" (click)="deleteGoal(goal.id)">X</button>

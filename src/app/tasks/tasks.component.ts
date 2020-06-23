@@ -31,7 +31,10 @@ export class TasksComponent implements OnInit, OnDestroy {
     this.recurrentTasksSub.unsubscribe();
   }
 
-  onCheck(event: Event, id: string) {}
+  onCheck(event: Event, id: string) {
+    const isChecked = (event.target as HTMLInputElement).checked;
+    this.tasksService.markDone(id, isChecked);
+  }
 
   deleteTask(id: string) {}
 

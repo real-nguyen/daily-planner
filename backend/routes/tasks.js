@@ -6,4 +6,6 @@ const TasksController = require('../controllers/tasks');
 
 router.get('', TasksController.fetchTasks);
 
+router.put('/:id', TasksController.markDone);
+
 module.exports = router;

@@ -1,11 +1,23 @@
+ul {
+  width: 25%;
+}
+
 li {
+  span.goal {
+    flex: 2;
+    padding-left: 1rem;
+    color: orange;
+  }
+
   button.delete-goal {
     visibility: hidden;
   }
+}
 
-  span.goal {
-    color: orange;
-  }
+li.goal-flex-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 li:hover {
