@@ -1,1 +1,13 @@
-<p>tasks works!</p>
+<ul>
+  <li *ngFor=" let task of priorityTasks">
+    <input type="checkbox" [(ngModel)]="task.done" (change)="onCheck($event, task.id)">
+    <span [ngStyle]="{ 'color': task.color }" [ngClass]="{'done' : task.done}">{{ task.task }}</span>
+    <button class="delete-task" (click)="deleteTask(task.id)">X</button>
+  </li>
+  <li>&nbsp;</li>
+  <li *ngFor=" let task of recurrentTasks">
+    <input type="checkbox" [(ngModel)]="task.done" (change)="onCheck($event, task.id)">
+    <span [ngStyle]="{ 'color': task.color }" [ngClass]="{'done' : task.done}">{{ task.task }}</span>
+    <button class="delete-task" (click)="deleteTask(task.id)">X</button>
+  </li>
+</ul>

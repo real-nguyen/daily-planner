@@ -1,0 +1,15 @@
+li {
+  button.delete-task {
+    visibility: hidden;
+  }
+
+  .new-line {
+    padding-bottom: 10px;
+  }
+}
+
+li:hover {
+  button.delete-task {
+    visibility: visible;
+  }
+}

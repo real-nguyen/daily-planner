@@ -36,7 +36,6 @@ export class GoalsService {
       })
     )
     .subscribe(res => {
-      console.log(res);
       this.goals = res.goals;
       this.goalsObservable.next({
         goals: [...this.goals]

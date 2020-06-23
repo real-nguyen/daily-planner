@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+ul {
+  padding-left: 0px;
+}
+
+li {
+  list-style: none;
+  padding-left: 0px;
+
+  span.done {
+    text-decoration: line-through;
+  }
+}

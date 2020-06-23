@@ -1,21 +1,10 @@
-ul {
-  padding-left: 0px;
-}
-
 li {
-  list-style: none;
-  padding-left: 0px;
+  button.delete-goal {
+    visibility: hidden;
+  }
 
   span.goal {
     color: orange;
-  }
-
-  span.done {
-    text-decoration: line-through;
-  }
-
-  button.delete-goal {
-    visibility: hidden;
   }
 }
 
