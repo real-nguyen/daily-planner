@@ -36,6 +36,10 @@ export class TasksComponent implements OnInit, OnDestroy {
     this.tasksService.markDone(id, isChecked);
   }
 
-  deleteTask(id: string) {}
+  deleteTask(id: string) {
+    this.tasksService.deleteTask(id).subscribe(() => {
+      this.tasksService.fetchTasks();
+    });
+  }
 
 }

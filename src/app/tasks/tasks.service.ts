@@ -58,6 +58,11 @@ export class TasksService {
     this.http.put(BACKEND_URL + '/' + id, { done: checked }).subscribe();
   }
 
+  deleteTask(id: string) {
+    // Return observable so that component can fetch tasks again on subscription
+    return this.http.delete(BACKEND_URL + '/' + id);
+  }
+
   getPriorityTasksObservable() {
     return this.priorityTasksObservable.asObservable();
   }

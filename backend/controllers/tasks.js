@@ -63,3 +63,21 @@ exports.markDone = (req, res, next) => {
     });
   });
 };
+
+exports.deleteTask = (req, res, next) => {
+  Task.deleteOne({ _id: req.params.id })
+  .then(result => {
+    console.log(result);
+    if (result.n > 0) {
+      console.log('Task deleted.');
+      res.status(200).json({message: 'Task deleted.'});
+    } else {
+      console.log('Could not delete task.');
+    }
+  })
+  .catch(error => {
+    res.status(500).json({
+      message: 'Could not delete task: ' + error
+    });
+  });
+}
