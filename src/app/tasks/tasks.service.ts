@@ -24,8 +24,8 @@ export class TasksService {
           return {
             id: task._id,
             task: task.task,
-            type: task.type.type,
-            color: task.type.color,
+            type: task.type,
+            color: task.color,
             done: task.done,
             hoursRequired: task.hoursRequired
           }
@@ -34,8 +34,8 @@ export class TasksService {
           return {
             id: task._id,
             task: task.task,
-            type: task.type.type,
-            color: task.type.color,
+            type: task.type,
+            color: task.color,
             done: task.done,
             hoursRequired: task.hoursRequired
           }
