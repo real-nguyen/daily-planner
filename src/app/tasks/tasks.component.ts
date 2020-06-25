@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 export class TasksComponent implements OnInit, OnDestroy {
   priorityTasks: Task[];
   recurrentTasks: Task[];
+  totalTaskHours = 0;
   private priorityTasksSub: Subscription;
   private recurrentTasksSub: Subscription;
 
@@ -20,15 +21,18 @@ export class TasksComponent implements OnInit, OnDestroy {
     this.tasksService.fetchTasks();
     this.priorityTasksSub = this.tasksService.getPriorityTasksObservable().subscribe(data => {
       this.priorityTasks = data.tasks;
+      this.priorityTasks.forEach(task => this.totalTaskHours += task.hoursRequired);
     });
     this.priorityTasksSub = this.tasksService.getRecurrentTasksObservable().subscribe(data => {
       this.recurrentTasks = data.tasks;
+      this.recurrentTasks.forEach(task => this.totalTaskHours += task.hoursRequired);
     });
   }
 
   ngOnDestroy() {
     this.priorityTasksSub.unsubscribe();
     this.recurrentTasksSub.unsubscribe();
+    this.totalTaskHours = 0;
   }
 
   onCheck(event: Event, id: string) {

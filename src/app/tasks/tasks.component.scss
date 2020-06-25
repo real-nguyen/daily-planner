@@ -8,6 +8,15 @@ li {
     padding-left: 1rem;
   }
 
+  span.total-task-hours-label {
+    flex: 10;
+  }
+
+  span.total-task-hours {
+    flex: auto;
+    padding-left: 1rem;
+  }
+
   button.delete-task {
     visibility: hidden;
   }

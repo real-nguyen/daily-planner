@@ -12,4 +12,9 @@
     <span class="hours-required">{{ task.hoursRequired }}</span>
     <button class="delete-task" (click)="deleteTask(task.id)">X</button>
   </li>
+  <li>&nbsp;</li>
+  <li class="task-flex-container">
+    <span class="total-task-hours-label">Total task hours:</span>
+    <span class="total-task-hours">{{ totalTaskHours }}</span>
+  </li>
 </ul>
