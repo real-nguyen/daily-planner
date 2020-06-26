@@ -1,7 +1,6 @@
 const Task = require('../models/task');
 
 exports.fetchTasks = (req, res, next) => {
-  // Join with TaskType schema on Type.type == TaskType._id
   // Filter out free time tasks
   // Get priority and recurrent tasks
   // Sort by hours required, descending
@@ -31,7 +30,7 @@ exports.fetchTasks = (req, res, next) => {
     const recurrentTasks = result.find(t => t._id == 'Recurrent');
     res.status(200).json({
       priorityTasks: priorityTasks,
-      recurrentTasks, recurrentTasks
+      recurrentTasks: recurrentTasks
     });
   });
 };

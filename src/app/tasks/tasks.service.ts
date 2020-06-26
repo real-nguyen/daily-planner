@@ -63,6 +63,10 @@ export class TasksService {
     return this.http.delete(BACKEND_URL + '/' + id);
   }
 
+  addTask(task: Task) {
+    return this.http.post<{ message: string }>(BACKEND_URL, task);
+  }
+
   getPriorityTasksObservable() {
     return this.priorityTasksObservable.asObservable();
   }

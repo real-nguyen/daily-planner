@@ -5,4 +5,5 @@ export interface Task {
   color: string;
   done: boolean;
   hoursRequired: number;
+  note: string;
 }

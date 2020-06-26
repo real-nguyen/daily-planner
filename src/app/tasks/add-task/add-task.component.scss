@@ -1,0 +1,18 @@
+div[mat-dialog-content] > div {
+  display: flex;
+  width: 100%;
+  padding-bottom: 0.5em;
+
+  label {
+    flex: 1;
+  }
+
+  input, select, textarea {
+    flex: 2;
+  }
+}
+
+div[mat-dialog-content] > div[mat-dialog-actions] {
+  // Align buttons to the right
+  justify-content: flex-end;
+}

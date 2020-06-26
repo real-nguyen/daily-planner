@@ -3,6 +3,7 @@ import { TasksService } from './tasks.service';
 import { Task } from '../models/task.model';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
+import { AddTaskComponent } from './add-task/add-task.component';
 
 @Component({
   selector: 'app-tasks',
@@ -16,7 +17,7 @@ export class TasksComponent implements OnInit, OnDestroy {
   private priorityTasksSub: Subscription;
   private recurrentTasksSub: Subscription;
 
-  constructor(private tasksService: TasksService) { }
+  constructor(private tasksService: TasksService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.tasksService.fetchTasks();
@@ -48,7 +49,15 @@ export class TasksComponent implements OnInit, OnDestroy {
   }
 
   onAddClick() {
+    const dialogRef = this.dialog.open(AddTaskComponent, {
+      width: '40%',
+      data: { mode: 'create' }
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.tasksService.fetchTasks();
+      }
+    });
   }
-
 }
