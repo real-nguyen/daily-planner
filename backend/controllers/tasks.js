@@ -74,6 +74,15 @@ exports.deleteTask = (req, res, next) => {
 exports.addTask = (req, res, next) => {
   const task = new Task({
     task: req.body.task,
-
+    type: req.body.type,
+    color: req.body.color,
+    done: req.body.done,
+    hoursRequired: req.body.hoursRequired
+  });
+  task.save().then(result => {
+    console.log(result);
+    res.status(200).json({
+      message: 'Task added.'
+    });
   });
 };

@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TasksService } from './tasks.service';
 import { Task } from '../models/task.model';
 import { Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-tasks',
@@ -44,6 +45,10 @@ export class TasksComponent implements OnInit, OnDestroy {
     this.tasksService.deleteTask(id).subscribe(() => {
       this.tasksService.fetchTasks();
     });
+  }
+
+  onAddClick() {
+
   }
 
 }

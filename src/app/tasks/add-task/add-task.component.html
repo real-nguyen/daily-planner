@@ -1,0 +1,9 @@
+<form>
+  <input ngModel name="task" type="text">
+  <select [(ngModel)]="type" name="type">
+    <option *ngFor="let type of types" [value]="type" [label]="type"></option>
+  </select>
+  <input ngModel name="hoursRequired" type="text" numeric>
+  <input type="checkbox" ngModel name="done">
+  <textarea ngModel name="note"></textarea>
+</form>

@@ -8,13 +8,15 @@ import { HeaderComponent } from './header/header.component';
 import { GoalsComponent } from './goals/goals.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TasksComponent } from './tasks/tasks.component';
+import { AddTaskComponent } from './tasks/add-task/add-task.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     GoalsComponent,
-    TasksComponent
+    TasksComponent,
+    AddTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -23,6 +25,8 @@ import { TasksComponent } from './tasks/tasks.component';
     HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  // Tells Angular that this component will be used even if Angular can't see it
+  entryComponents: [AddTaskComponent]
 })
 export class AppModule { }
