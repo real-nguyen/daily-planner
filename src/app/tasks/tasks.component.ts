@@ -14,8 +14,7 @@ export class TasksComponent implements OnInit, OnDestroy {
   priorityTasks: Task[];
   recurrentTasks: Task[];
   totalTaskHours = 0;
-  private priorityTasksSub: Subscription;
-  private recurrentTasksSub: Subscription;
+  private tasksSub: Subscription;
 
   constructor(private tasksService: TasksService, public dialog: MatDialog) { }
 
@@ -25,7 +24,7 @@ export class TasksComponent implements OnInit, OnDestroy {
 
   fetchTasks() {
     this.tasksService.fetchTasks();
-    this.priorityTasksSub = this.tasksService.getTasksObservable().subscribe(data => {
+    this.tasksSub = this.tasksService.getTasksObservable().subscribe(data => {
       this.priorityTasks = data.priorityTasks;
       this.recurrentTasks = data.recurrentTasks;
       this.totalTaskHours = data.totalTaskHours;
@@ -33,8 +32,7 @@ export class TasksComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.priorityTasksSub.unsubscribe();
-    this.recurrentTasksSub.unsubscribe();
+    this.tasksSub.unsubscribe();
   }
 
   onCheck(event: Event, id: string) {

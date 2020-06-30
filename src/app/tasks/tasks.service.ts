@@ -61,7 +61,7 @@ export class TasksService {
   }
 
   markDone(id: string, checked: boolean) {
-    this.http.put(BACKEND_URL + '/' + id, { done: checked }).subscribe();
+    this.http.post(BACKEND_URL + '/' + id, { done: checked }).subscribe();
   }
 
   deleteTask(id: string) {
