@@ -1,3 +1,14 @@
 ul {
   width: 25%;
 }
+
+li {
+  div span.total-task-hours-label {
+    flex: 10;
+  }
+
+  div span.total-task-hours {
+    flex: auto;
+  }
+}
+

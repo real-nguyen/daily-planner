@@ -9,4 +9,10 @@ li {
   span.done {
     text-decoration: line-through;
   }
+
+  div.task-flex-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
 }

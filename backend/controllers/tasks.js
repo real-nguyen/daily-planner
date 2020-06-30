@@ -21,7 +21,8 @@ exports.fetchTasks = (req, res, next) => {
         type: '$type',
         color: '$color',
         done: '$done',
-        hoursRequired: '$hoursRequired'
+        hoursRequired: '$hoursRequired',
+        note: '$note'
       }
     }
   })
@@ -41,7 +42,8 @@ exports.addTask = (req, res, next) => {
     type: req.body.type,
     color: req.body.color,
     done: req.body.done,
-    hoursRequired: req.body.hoursRequired
+    hoursRequired: req.body.hoursRequired,
+    note: req.body.note
   });
   task.save().then(result => {
     console.log(result);
@@ -71,8 +73,9 @@ exports.markDone = (req, res, next) => {
 
 exports.updateTask = (req, res, next) => {
   // Returns the updated task
-  Task.findOneAndUpdate({ _id: req.params.id }, req.body.post, { new: true })
+  Task.findOneAndUpdate({ _id: req.params.id }, req.body.task, { new: true })
   .then(result => {
+    console.log(result);
     console.log('Task updated.');
     res.status(200).json({message: 'Task updated.'});
   })

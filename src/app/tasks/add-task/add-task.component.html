@@ -4,7 +4,7 @@
   <div mat-dialog-content>
     <div>
       <label for="task">Task</label>
-      <input ngModel name="task" type="text" required placeholder="What would you like to do?">
+      <input [(ngModel)]="task" name="task" type="text" required placeholder="What would you like to do?">
     </div>
     <div>
       <label for="type">Type</label>
@@ -14,15 +14,18 @@
     </div>
     <div>
       <label for="hoursRequired">Hours required</label>
-      <input ngModel name="hoursRequired" type="text" numeric required>
+      <input [(ngModel)]="hoursRequired" name="hoursRequired" type="text" numeric required>
     </div>
-    <div *ngIf="mode == 'edit'">
+    <div *ngIf="mode === 'edit'">
       <label for="done">Done</label>
-      <input type="checkbox" ngModel name="done">
+      <!-- Wrap checkbox in span to align it to the left -->
+      <span>
+        <input type="checkbox" [(ngModel)]="done" name="done">
+      </span>
     </div>
     <div>
       <label for="note">Note</label>
-      <textarea ngModel name="note"></textarea>
+      <textarea [(ngModel)]="note" name="note"></textarea>
     </div>
     <div mat-dialog-actions>
       <button (click)="onCancelClick()">Cancel</button>

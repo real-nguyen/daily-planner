@@ -7,12 +7,17 @@ div[mat-dialog-content] > div {
     flex: 1;
   }
 
-  input, select, textarea {
+  input, select, textarea, span {
     flex: 2;
+
+    & > input[type=checkbox] {
+      margin: 0;
+    }
+  }
+
+  &[mat-dialog-actions] {
+    // Align buttons to the right
+    justify-content: flex-end;
   }
 }
 
-div[mat-dialog-content] > div[mat-dialog-actions] {
-  // Align buttons to the right
-  justify-content: flex-end;
-}

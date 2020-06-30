@@ -30,7 +30,8 @@ export class TasksService {
             type: task.type,
             color: task.color,
             done: task.done,
-            hoursRequired: task.hoursRequired
+            hoursRequired: task.hoursRequired,
+            note: task.note
           }
         }),
         recurrentTasks: data.recurrentTasks.tasks.map(task => {
@@ -40,7 +41,8 @@ export class TasksService {
             type: task.type,
             color: task.color,
             done: task.done,
-            hoursRequired: task.hoursRequired
+            hoursRequired: task.hoursRequired,
+            note: task.note
           }
         })
       }
@@ -74,7 +76,7 @@ export class TasksService {
   }
 
   editTask(task: Task) {
-    return this.http.patch<{ message: string }>(BACKEND_URL + '/' + task.id, task);
+    return this.http.patch<{ message: string }>(BACKEND_URL + '/' + task.id, {task: task});
   }
 
   getTasksObservable() {

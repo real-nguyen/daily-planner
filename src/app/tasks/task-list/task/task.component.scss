@@ -3,29 +3,19 @@ div {
     flex: 2;
   }
 
-  span.total-task-hours-label {
-    flex: 10;
-  }
-
-  span.total-task-hours {
-    flex: auto;
-  }
-
   button.delete-task,
   button.edit-task {
     visibility: hidden;
   }
-}
 
-div.task-flex-container {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-
-div:hover {
-  button.delete-task,
-  button.edit-task {
-    visibility: visible;
+  // & selects the parent element
+  // i.e. &:hover = div:hover
+  &:hover {
+    button.delete-task,
+    button.edit-task {
+      visibility: visible;
+    }
   }
 }
+
+

@@ -25,10 +25,13 @@ export class TaskComponent {
     });
   }
 
-  editTask(id: string) {
+  editTask(task: Task) {
     const dialogRef = this.dialog.open(AddTaskComponent, {
       width: '40%',
-      data: { mode: 'edit' }
+      data: {
+        mode: 'edit',
+        task: task
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
