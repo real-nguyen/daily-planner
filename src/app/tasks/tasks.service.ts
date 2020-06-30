@@ -11,8 +11,11 @@ const BACKEND_URL = environment.apiUrl + '/tasks';
 export class TasksService {
   private priorityTasks: Task[] = [];
   private recurrentTasks: Task[] = [];
-  private priorityTasksObservable = new Subject<{tasks: Task[]}>();
-  private recurrentTasksObservable = new Subject<{tasks: Task[]}>();
+  private tasksObservable = new Subject<{
+    priorityTasks: Task[],
+    recurrentTasks: Task[],
+    totalTaskHours: number
+  }>();
 
   constructor(private http: HttpClient) {}
 
@@ -45,11 +48,14 @@ export class TasksService {
     .subscribe(res => {
       this.priorityTasks = res.priorityTasks;
       this.recurrentTasks = res.recurrentTasks;
-      this.priorityTasksObservable.next({
-        tasks: [...this.priorityTasks]
-      });
-      this.recurrentTasksObservable.next({
-        tasks: [...this.recurrentTasks]
+      // let is reassignable, const is not
+      let totalTaskHours = 0;
+      this.priorityTasks.forEach(task => totalTaskHours += task.hoursRequired);
+      this.recurrentTasks.forEach(task => totalTaskHours += task.hoursRequired);
+      this.tasksObservable.next({
+        priorityTasks: [...this.priorityTasks],
+        recurrentTasks: [...this.recurrentTasks],
+        totalTaskHours: totalTaskHours
       });
     });
   }
@@ -67,11 +73,7 @@ export class TasksService {
     return this.http.post<{ message: string }>(BACKEND_URL, task);
   }
 
-  getPriorityTasksObservable() {
-    return this.priorityTasksObservable.asObservable();
-  }
-
-  getRecurrentTasksObservable() {
-    return this.recurrentTasksObservable.asObservable();
+  getTasksObservable() {
+    return this.tasksObservable.asObservable();
   }
 }
