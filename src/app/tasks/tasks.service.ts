@@ -73,6 +73,10 @@ export class TasksService {
     return this.http.post<{ message: string }>(BACKEND_URL, task);
   }
 
+  editTask(task: Task) {
+    return this.http.patch<{ message: string }>(BACKEND_URL + '/' + task.id, task);
+  }
+
   getTasksObservable() {
     return this.tasksObservable.asObservable();
   }

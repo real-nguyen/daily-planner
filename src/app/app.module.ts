@@ -10,16 +10,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { GoalsComponent } from './goals/goals.component';
-import { TasksComponent } from './tasks/tasks.component';
+import { TaskListComponent } from './tasks/task-list/task-list.component';
 import { AddTaskComponent } from './tasks/add-task/add-task.component';
+import { TaskComponent } from './tasks/task-list/task/task.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     GoalsComponent,
-    TasksComponent,
-    AddTaskComponent
+    TaskListComponent,
+    AddTaskComponent,
+    TaskComponent
   ],
   imports: [
     BrowserModule,

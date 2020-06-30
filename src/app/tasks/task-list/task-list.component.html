@@ -1,0 +1,18 @@
+<ul>
+  <li *ngFor="let task of priorityTasks">
+    <app-task [task]="task"></app-task>
+  </li>
+  <li>&nbsp;</li>
+  <li *ngFor="let task of recurrentTasks">
+    <app-task [task]="task"></app-task>
+  </li>
+  <li>&nbsp;</li>
+  <li>
+    <button (click)="onAddClick()">+ Add</button>
+  </li>
+  <li>&nbsp;</li>
+  <li class="task-flex-container">
+    <span class="total-task-hours-label">Total task hours:</span>
+    <span class="total-task-hours">{{ totalTaskHours }}</span>
+  </li>
+</ul>

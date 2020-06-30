@@ -1,11 +1,6 @@
-ul {
-  width: 25%;
-}
-
-li {
+div {
   span.task {
     flex: 2;
-    padding-left: 1rem;
   }
 
   span.total-task-hours-label {
@@ -14,22 +9,23 @@ li {
 
   span.total-task-hours {
     flex: auto;
-    padding-left: 1rem;
   }
 
-  button.delete-task {
+  button.delete-task,
+  button.edit-task {
     visibility: hidden;
   }
 }
 
-li.task-flex-container {
+div.task-flex-container {
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
 
-li:hover {
-  button.delete-task {
+div:hover {
+  button.delete-task,
+  button.edit-task {
     visibility: visible;
   }
 }
