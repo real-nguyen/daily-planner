@@ -39,8 +39,9 @@ exports.markDone = (req, res, next) => {
   Goal.updateOne({ _id: req.params.id }, { done: req.body.done })
   .then(result => {
     if (result.n > 0) {
-      console.log('Goal updated.');
-      res.status(200).json({message: 'Goal updated.'});
+      const message = req.body.done ? 'Marked goal as done.' : 'Marked goal as not done.';
+      console.log(message);
+      res.status(200).json({message: message});
     } else {
       console.log('Could not update goal.');
     }
@@ -50,6 +51,20 @@ exports.markDone = (req, res, next) => {
       message: 'Could not update goal:' + error
     });
   });
+};
+
+exports.updateGoal = (req, res, next) => {
+  Goal.findOneAndUpdate({ _id: req.params.id }, req.body.goal)
+  .then(result => {
+    console.log(result);
+    console.log('Goal updated.');
+    res.status(200).json({message: 'Goal updated.'});
+  })
+  .catch(error => {
+    res.status(500).json({
+      message: 'Could not update goal:' + error
+    });
+  })
 };
 
 exports.deleteGoal = (req, res, next) => {

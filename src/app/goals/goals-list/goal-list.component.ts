@@ -1,18 +1,18 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
-import { Goal } from '../models/goal.model';
+import { Goal } from '../../models/goal.model';
 import { Subscription } from 'rxjs';
-import { GoalsService } from './goals.service';
+import { GoalsService } from '../goals.service';
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-goals',
-  templateUrl: './goals.component.html',
-  styleUrls: ['./goals.component.scss']
+  selector: 'app-goal-list',
+  templateUrl: './goal-list.component.html',
+  styleUrls: ['./goal-list.component.scss']
 })
-export class GoalsComponent implements OnInit, OnDestroy {
+export class GoalListComponent implements OnInit, OnDestroy {
   goals: Goal[];
-  editMode = false;
+  addMode = false;
   private goalsSub: Subscription;
 
   constructor(private goalsService: GoalsService) { }
@@ -29,13 +29,8 @@ export class GoalsComponent implements OnInit, OnDestroy {
     this.goalsSub.unsubscribe();
   }
 
-  onCheck(event: Event, id: string) {
-    const isChecked = (event.target as HTMLInputElement).checked;
-    this.goalsService.markDone(id, isChecked);
-  }
-
   onAddClick() {
-    this.editMode = true;
+    this.addMode = true;
   }
 
   addGoal(form: NgForm) {
@@ -44,17 +39,12 @@ export class GoalsComponent implements OnInit, OnDestroy {
     }
     this.goalsService.addGoal(form.value.goal);
     form.reset();
-    this.editMode = false;
+    this.addMode = false;
   }
 
   cancel(form: NgForm) {
     form.reset();
-    this.editMode = false;
+    this.addMode = false;
   }
 
-  deleteGoal(id: string) {
-    this.goalsService.deleteGoal(id).subscribe(() => {
-      this.goalsService.fetchGoals();
-    });
-  }
 }

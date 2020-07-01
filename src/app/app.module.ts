@@ -5,23 +5,26 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { GoalsComponent } from './goals/goals.component';
+import { GoalListComponent } from './goals/goals-list/goal-list.component';
+import { GoalComponent } from './goals/goal/goal.component';
 import { TaskListComponent } from './tasks/task-list/task-list.component';
 import { AddTaskComponent } from './tasks/add-task/add-task.component';
-import { TaskComponent } from './tasks/task-list/task/task.component';
+import { TaskComponent } from './tasks/task/task.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    GoalsComponent,
+    GoalListComponent,
     TaskListComponent,
     AddTaskComponent,
-    TaskComponent
+    TaskComponent,
+    GoalComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,8 @@ import { TaskComponent } from './tasks/task-list/task/task.component';
     HttpClientModule,
     MatDialogModule,
     MatInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent],

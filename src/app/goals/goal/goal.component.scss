@@ -1,0 +1,40 @@
+$icon-padding: 0.3rem;
+
+form {
+  &.goal-flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  span.goal {
+    color: orange;
+  }
+
+  span.goal,
+  input[type=text] {
+    flex: 2;
+  }
+
+  fa-icon {
+    flex: 0;
+    padding: 0 $icon-padding 0 $icon-padding;
+    visibility: hidden;
+    color: darkgrey;
+  }
+
+  button {
+    margin: 0.3rem;
+  }
+
+  &:hover {
+    background-color: whitesmoke;
+    fa-icon {
+      visibility: visible;
+      &:hover {
+        color: dimgrey;
+      }
+    }
+  }
+}

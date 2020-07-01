@@ -8,7 +8,9 @@ router.get('', GoalsController.fetchGoals);
 
 router.post('', GoalsController.addGoal);
 
-router.put('/:id', GoalsController.markDone);
+router.post('/:id', GoalsController.markDone);
+
+router.patch('/:id', GoalsController.updateGoal);
 
 router.delete('/:id', GoalsController.deleteGoal);
 

@@ -63,7 +63,11 @@ export class GoalsService {
   }
 
   markDone(id: string, checked: boolean) {
-    this.http.put(BACKEND_URL + '/' + id, { done: checked }).subscribe();
+    this.http.post(BACKEND_URL + '/' + id, { done: checked }).subscribe();
+  }
+
+  editGoal(goal: Goal) {
+    return this.http.patch<{ message: string }>(BACKEND_URL + '/' + goal.id, { goal: goal });
   }
 
   deleteGoal(id: string) {

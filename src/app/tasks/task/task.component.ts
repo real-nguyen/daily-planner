@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Task } from 'src/app/models/task.model';
-import { TasksService } from '../../tasks.service';
+import { TasksService } from '../tasks.service';
 import { MatDialog } from '@angular/material/dialog';
-import { AddTaskComponent } from '../../add-task/add-task.component';
+import { AddTaskComponent } from '../add-task/add-task.component';
 
 @Component({
   selector: 'app-task',

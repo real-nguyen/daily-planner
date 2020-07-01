@@ -1,0 +1,17 @@
+<ul>
+  <li *ngFor="let goal of goals">
+    <app-goal [goal]="goal"></app-goal>
+  </li>
+
+  <form #goalListForm="ngForm" (submit)="addGoal(goalListForm)">
+    <li>
+      <button (click)="onAddClick()" *ngIf="!addMode">+ Add</button>
+      <input type="text" name="goal" ngModel *ngIf="addMode" placeholder="What is your goal?"/>
+    </li>
+
+    <li *ngIf="addMode">
+      <button type="submit">Add</button>
+      <button (click)="cancel(goalListForm)">Cancel</button>
+    </li>
+  </form>
+</ul>
