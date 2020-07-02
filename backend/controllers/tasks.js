@@ -8,7 +8,7 @@ exports.fetchTasks = (req, res, next) => {
   Task.aggregate()
   .match({
     $expr: {
-      $not: { $eq: ['$type', 'Free Time'] }
+      $not: { $eq: ['$type', 'free-time'] }
     }
   })
   .sort({ hoursRequired: -1 })
@@ -19,7 +19,6 @@ exports.fetchTasks = (req, res, next) => {
         _id: '$_id',
         task: '$task',
         type: '$type',
-        color: '$color',
         done: '$done',
         hoursRequired: '$hoursRequired',
         note: '$note'
@@ -27,8 +26,8 @@ exports.fetchTasks = (req, res, next) => {
     }
   })
   .then(result => {
-    const priorityTasks = result.find(t => t._id == 'Priority');
-    const recurrentTasks = result.find(t => t._id == 'Recurrent');
+    const priorityTasks = result.find(t => t._id == 'priority');
+    const recurrentTasks = result.find(t => t._id == 'recurrent');
     res.status(200).json({
       priorityTasks: priorityTasks,
       recurrentTasks: recurrentTasks
@@ -36,11 +35,24 @@ exports.fetchTasks = (req, res, next) => {
   });
 };
 
+exports.fetchFreeTimeTasks = (req, res, next) => {
+  Task.find({ type: 'free-time' })
+  .then(result => {
+    res.status(200).json({
+      freeTimeTasks: result
+    });
+  })
+  .catch(error => {
+    res.status(500).json({
+      message: 'Could not fetch Free Time tasks.'
+    });
+  });
+}
+
 exports.addTask = (req, res, next) => {
   const task = new Task({
     task: req.body.task,
     type: req.body.type,
-    color: req.body.color,
     done: req.body.done,
     hoursRequired: req.body.hoursRequired,
     note: req.body.note

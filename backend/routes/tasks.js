@@ -6,6 +6,8 @@ const TasksController = require('../controllers/tasks');
 
 router.get('', TasksController.fetchTasks);
 
+router.get('/free-time', TasksController.fetchFreeTimeTasks);
+
 router.post('', TasksController.addTask);
 
 router.post('/:id', TasksController.markDone);

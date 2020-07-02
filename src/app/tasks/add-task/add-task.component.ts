@@ -9,15 +9,14 @@ import { TasksService } from '../tasks.service';
   styleUrls: ['./add-task.component.scss']
 })
 export class AddTaskComponent {
-  types = ["Priority", "Recurrent", "Free Time"];
-  colorMap = {
-    "Priority": "red",
-    "Recurrent": "blue",
-    "Free Time": "black"
-  };
+  types = [
+    { value: "priority", label: "Priority" },
+    { value: "recurrent", label: "Recurrent" },
+    { value: "free-time", label: "Free Time" }
+  ];
   id: string;
   task: string;
-  type = "Priority";
+  type = "priority";
   hoursRequired: number;
   done: boolean;
   note: string;
@@ -51,11 +50,15 @@ export class AddTaskComponent {
       id: null,
       task: form.value.task,
       type: form.value.type,
-      color: this.colorMap[form.value.type],
-      hoursRequired: form.value.hoursRequired,
-      done: false,
       note: form.value.note
     };
+
+    if (data.type !== 'Free Time') {
+      data.hoursRequired = form.value.hoursRequired;
+      if (this.mode === 'edit') {
+        data.done = form.value.done;
+      }
+    }
 
     if (this.mode === 'create') {
       this.tasksService.addTask(data).subscribe(res => {
@@ -63,7 +66,6 @@ export class AddTaskComponent {
       });
     } else {
       data.id = this.id;
-      data.done = form.value.done;
       this.tasksService.editTask(data).subscribe(res => {
         this.dialogRef.close(res.message);
       });

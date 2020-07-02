@@ -4,13 +4,23 @@ ul {
 
 li {
   div span.total-task-hours-label {
-    flex: 10;
+    flex: 1;
     cursor: initial;
   }
 
   div span.total-task-hours {
-    flex: auto;
     cursor: initial;
+    margin-right: 1rem;
   }
+
+  &.add-task-container {
+    margin-left: calc(6px + 0.7rem);
+  }
+
+  &.add-task-container,
+  &.total-task-hours-container {
+    padding: 0.3rem 0 0.3rem 0;
+  }
+
 }
 

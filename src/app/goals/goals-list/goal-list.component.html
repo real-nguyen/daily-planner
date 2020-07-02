@@ -7,7 +7,7 @@
   <form #goalListForm="ngForm" (submit)="addGoal(goalListForm)">
     <div class="add-goal-flex-container" [ngClass]="{ 'on-focus': addMode }">
       <li>
-        <button (click)="onAddClick()" *ngIf="!addMode">+ Add</button>
+        <button (click)="onAddClick()" *ngIf="!addMode">+ Add goal</button>
         <input type="text" name="goal" ngModel *ngIf="addMode" placeholder="What is your goal?"/>
       </li>
 
