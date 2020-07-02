@@ -5,15 +5,15 @@
   </li>
 
   <form #goalListForm="ngForm" (submit)="addGoal(goalListForm)">
-    <div class="add-goal-container" [ngClass]="{ 'on-focus': addMode }">
+    <div class="add-goal-flex-container" [ngClass]="{ 'on-focus': addMode }">
       <li>
         <button (click)="onAddClick()" *ngIf="!addMode">+ Add</button>
         <input type="text" name="goal" ngModel *ngIf="addMode" placeholder="What is your goal?"/>
       </li>
 
-      <li *ngIf="addMode">
-        <button type="submit">Add</button>
+      <li *ngIf="addMode" class="add-goal-btn-container">
         <button (click)="cancel(goalListForm)">Cancel</button>
+        <button type="submit">Add</button>
       </li>
     </div>
   </form>

@@ -4,8 +4,28 @@ ul {
   width: 25%;
 }
 
-.add-goal-container {
-  margin-left: 1rem;
+.add-goal-flex-container {
+  display: flex;
+  flex-flow: column wrap;
+  width: 100%;
+  border-left: 6px solid orange;
+
+  & > li {
+    padding: 0.3rem 0.7rem 0.3rem 0.7rem;
+
+    input {
+      font-size: 1.1rem;
+      width: 100%;
+    }
+
+    &.add-goal-btn-container {
+      align-self: flex-end;
+      padding: 0 0 0.3rem 0;
+      button {
+        margin-right: 0.5rem;
+      }
+    }
+  }
 }
 
 .on-focus {
