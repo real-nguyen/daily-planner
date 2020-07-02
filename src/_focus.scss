@@ -1,0 +1,10 @@
+// To use on hover or in edit mode
+@mixin on-focus {
+  background-color: whitesmoke;
+  fa-icon {
+    visibility: visible !important;
+    &:hover {
+      color: dimgrey;
+    }
+  }
+}

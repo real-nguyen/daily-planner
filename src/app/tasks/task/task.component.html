@@ -1,7 +1,6 @@
-<div [ngStyle]="{ 'color': task.color }" class="task-flex-container">
+<div [ngStyle]="{ 'border-color': task.color }" class="task-flex-container" (click)="editTask(task)">
   <input type="checkbox" [(ngModel)]="task.done" (change)="onCheck($event, task.id)">
-  <button class="edit-task" (click)="editTask(task)">E</button>
   <span [ngClass]="{'done' : task.done}" class="task">{{ task.task }}</span>
   <span class="hours-required">{{ task.hoursRequired }}</span>
-  <button class="delete-task" (click)="deleteTask(task.id)">X</button>
+  <fa-icon [icon]="faTimes" (click)="deleteTask(task.id)"></fa-icon>
 </div>

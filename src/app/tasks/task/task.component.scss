@@ -1,19 +1,36 @@
-div {
-  span.task {
+div.task-flex-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  border-left-width: 6px;
+  border-left-style: solid;
+
+  span.task,
+  input[type=text] {
     flex: 2;
+    font-size: 1.1rem;
   }
 
-  button.delete-task,
-  button.edit-task {
+  input[type=checkbox] {
+    margin: 0 0.7rem 0 0.7rem;
+  }
+
+  fa-icon {
+    flex: 0;
+    padding: 0.3rem;
     visibility: hidden;
+    color: darkgrey;
   }
 
   // & selects the parent element
   // i.e. &:hover = div:hover
   &:hover {
-    button.delete-task,
-    button.edit-task {
+    background-color: whitesmoke;
+    fa-icon {
       visibility: visible;
+      &:hover {
+        color: dimgrey;
+      }
     }
   }
 }

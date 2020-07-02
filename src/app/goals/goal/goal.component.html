@@ -1,11 +1,13 @@
-<form #goalForm="ngForm" (submit)="editGoal(goalForm)" class="goal-flex-container">
-  <input type="checkbox" [(ngModel)]="goal.done" (change)="onCheck($event, goal.id)" name="done">
-  <fa-icon [icon]="faEdit" (click)="onEditClick()"></fa-icon>
-  <span class="goal" [ngClass]="{'done' : goal.done}" *ngIf="!editMode">{{ goal.goal }}</span>
-  <input type="text" class="goal" *ngIf="editMode" [(ngModel)]="goal.goal" name="goal">
-  <fa-icon [icon]="faTrashAlt" size="s" (click)="deleteGoal(goal.id)"></fa-icon>
-  <div *ngIf="editMode">
-    <button type="submit">Save</button>
-    <button (click)="cancel(goalForm)">Cancel</button>
+<form #goalForm="ngForm" (submit)="editGoal(goalForm)">
+  <div (click)="onEditClick()" class="goal-flex-container" [ngClass]="{ 'on-focus': editMode }">
+    <input type="checkbox" [(ngModel)]="goal.done" (change)="onCheck($event, goal.id)" name="done">
+    <span class="goal" [ngClass]="{'done': goal.done}" *ngIf="!editMode">{{ goal.goal }}</span>
+    <input type="text" class="goal" *ngIf="editMode" [(ngModel)]="goal.goal" name="goal">
+    <fa-icon [icon]="faTimes" size="s" (click)="deleteGoal(goal.id)"></fa-icon>
+    <div *ngIf="editMode" class="goal-btn-container">
+      <button (click)="cancel(goalForm)">Cancel</button>
+      <button type="submit">Save</button>
+    </div>
   </div>
 </form>
+

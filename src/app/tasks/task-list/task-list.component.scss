@@ -5,10 +5,12 @@ ul {
 li {
   div span.total-task-hours-label {
     flex: 10;
+    cursor: initial;
   }
 
   div span.total-task-hours {
     flex: auto;
+    cursor: initial;
   }
 }
 

@@ -1,5 +1,14 @@
+@use "../../../focus" as focus;
+
 ul {
   width: 25%;
 }
 
+.add-goal-container {
+  margin-left: 1rem;
+}
+
+.on-focus {
+  @include focus.on-focus;
+}
 

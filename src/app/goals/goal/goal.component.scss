@@ -1,40 +1,43 @@
-$icon-padding: 0.3rem;
+@use "../../../../src/focus";
 
-form {
-  &.goal-flex-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    width: 100%;
-  }
-
-  span.goal {
-    color: orange;
-  }
+div.goal-flex-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  width: 100%;
+  border-left: 6px solid orange;
 
   span.goal,
   input[type=text] {
     flex: 2;
+    font-size: 1.1rem;
+  }
+
+  input[type=checkbox] {
+    margin: 0 0.7rem 0 0.7rem;
   }
 
   fa-icon {
     flex: 0;
-    padding: 0 $icon-padding 0 $icon-padding;
+    padding: 0.3rem;
     visibility: hidden;
     color: darkgrey;
   }
 
-  button {
-    margin: 0.3rem;
+  div.goal-btn-container {
+    padding: 0.5rem 0 0.5rem 0.5rem;
+
+    button {
+      margin-right: 0.5rem;
+    }
   }
 
   &:hover {
-    background-color: whitesmoke;
-    fa-icon {
-      visibility: visible;
-      &:hover {
-        color: dimgrey;
-      }
-    }
+    @include focus.on-focus;
   }
+}
+
+.on-focus {
+  @include focus.on-focus;
 }

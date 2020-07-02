@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
-import { faTrashAlt } from '@fortawesome/free-regular-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Goal } from 'src/app/models/goal.model';
 import { GoalsService } from '../goals.service';
 import { NgForm } from '@angular/forms';
@@ -13,8 +12,7 @@ import { NgForm } from '@angular/forms';
 export class GoalComponent implements OnInit {
   @Input() goal: Goal;
   editMode = false;
-  faEdit = faEdit;
-  faTrashAlt = faTrashAlt;
+  faTimes = faTimes;
 
   constructor(private goalsService: GoalsService) { }
 
@@ -58,5 +56,6 @@ export class GoalComponent implements OnInit {
   cancel(form: NgForm) {
     form.reset();
     this.editMode = false;
+    this.goalsService.fetchGoals();
   }
 }

@@ -1,17 +1,20 @@
+<h3>Goals</h3>
 <ul>
   <li *ngFor="let goal of goals">
     <app-goal [goal]="goal"></app-goal>
   </li>
 
   <form #goalListForm="ngForm" (submit)="addGoal(goalListForm)">
-    <li>
-      <button (click)="onAddClick()" *ngIf="!addMode">+ Add</button>
-      <input type="text" name="goal" ngModel *ngIf="addMode" placeholder="What is your goal?"/>
-    </li>
+    <div class="add-goal-container" [ngClass]="{ 'on-focus': addMode }">
+      <li>
+        <button (click)="onAddClick()" *ngIf="!addMode">+ Add</button>
+        <input type="text" name="goal" ngModel *ngIf="addMode" placeholder="What is your goal?"/>
+      </li>
 
-    <li *ngIf="addMode">
-      <button type="submit">Add</button>
-      <button (click)="cancel(goalListForm)">Cancel</button>
-    </li>
+      <li *ngIf="addMode">
+        <button type="submit">Add</button>
+        <button (click)="cancel(goalListForm)">Cancel</button>
+      </li>
+    </div>
   </form>
 </ul>

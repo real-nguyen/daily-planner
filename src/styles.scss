@@ -5,12 +5,14 @@ body {
 }
 
 ul {
-  padding-left: 0px;
+  padding-left: 0;
+  margin: 0;
 }
 
 li {
   list-style: none;
   padding-left: 0px;
+  cursor: pointer;
 
   span.done {
     text-decoration: line-through;
@@ -18,7 +20,6 @@ li {
 
   div.task-flex-container {
     display: flex;
-    justify-content: space-between;
     width: 100%;
   }
 }

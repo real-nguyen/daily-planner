@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Task } from 'src/app/models/task.model';
 import { TasksService } from '../tasks.service';
-import { MatDialog } from '@angular/material/dialog';
 import { AddTaskComponent } from '../add-task/add-task.component';
 
 @Component({
@@ -11,6 +12,7 @@ import { AddTaskComponent } from '../add-task/add-task.component';
 })
 export class TaskComponent {
   @Input() task: Task;
+  faTimes = faTimes;
 
   constructor(private tasksService: TasksService, public dialog: MatDialog) { }
 

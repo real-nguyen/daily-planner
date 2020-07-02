@@ -1,8 +1,9 @@
 <ul>
+  <li><h3>Priority</h3></li>
   <li *ngFor="let task of priorityTasks">
     <app-task [task]="task"></app-task>
   </li>
-  <li>&nbsp;</li>
+  <li><h3>Recurrent</h3></li>
   <li *ngFor="let task of recurrentTasks">
     <app-task [task]="task"></app-task>
   </li>
