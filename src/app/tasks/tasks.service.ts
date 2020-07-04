@@ -11,11 +11,13 @@ const BACKEND_URL = environment.apiUrl + '/tasks';
 export class TasksService {
   private priorityTasks: Task[] = [];
   private recurrentTasks: Task[] = [];
+  private freeTimeTasks: Task[] = [];
   private tasksObservable = new Subject<{
     priorityTasks: Task[],
     recurrentTasks: Task[],
     totalTaskHours: number
   }>();
+  private freeTimeTasksObservable = new Subject<{freeTimeTasks: Task[]}>();
 
   constructor(private http: HttpClient) {}
 
@@ -60,6 +62,32 @@ export class TasksService {
     });
   }
 
+  fetchFreeTimeTasks() {
+    this.http.get<{ freeTimeTasks: any }>(BACKEND_URL + '/free-time')
+    .pipe(map(data => {
+      console.log(data)
+      return {
+        freeTimeTasks: data.freeTimeTasks.map(task => {
+          return {
+            id: task._id,
+            task: task.task,
+            type: task.type,
+            done: task.done,
+            hoursRequired: task.hoursRequired,
+            note: task.note
+          }
+        })
+      }
+    }))
+    .subscribe(res => {
+      console.log(res);
+      this.freeTimeTasks = res.freeTimeTasks;
+      this.freeTimeTasksObservable.next({
+        freeTimeTasks: [...this.freeTimeTasks]
+      });
+    });
+  }
+
   markDone(id: string, checked: boolean) {
     this.http.post(BACKEND_URL + '/' + id, { done: checked }).subscribe();
   }
@@ -79,5 +107,9 @@ export class TasksService {
 
   getTasksObservable() {
     return this.tasksObservable.asObservable();
+  }
+
+  getFreeTimeTasksObservable() {
+    return this.freeTimeTasksObservable.asObservable();
   }
 }

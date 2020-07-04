@@ -15,6 +15,7 @@ import { GoalComponent } from './goals/goal/goal.component';
 import { TaskListComponent } from './tasks/task-list/task-list.component';
 import { AddTaskComponent } from './tasks/add-task/add-task.component';
 import { TaskComponent } from './tasks/task/task.component';
+import { FreeTimeComponent } from './free-time/free-time.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { TaskComponent } from './tasks/task/task.component';
     TaskListComponent,
     AddTaskComponent,
     TaskComponent,
-    GoalComponent
+    GoalComponent,
+    FreeTimeComponent
   ],
   imports: [
     BrowserModule,

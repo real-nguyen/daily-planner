@@ -1,5 +1,5 @@
-<h2 mat-mat-dialog-title *ngIf="mode === 'create'">Add a task</h2>
-<h2 mat-mat-dialog-title *ngIf="mode === 'edit'">Edit task</h2>
+<h2 mat-dialog-title *ngIf="mode === 'create'">Add a task</h2>
+<h2 mat-dialog-title *ngIf="mode === 'edit'">Edit task</h2>
 <form #taskForm="ngForm" (submit)="addTask(taskForm)">
   <div mat-dialog-content>
     <div>
@@ -28,7 +28,7 @@
       <textarea [(ngModel)]="note" name="note"></textarea>
     </div>
     <div mat-dialog-actions>
-      <button (click)="onCancelClick()">Cancel</button>
+      <button mat-dialog-close>Cancel</button>
       <button type="submit">Save</button>
     </div>
   </div>

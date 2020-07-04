@@ -1,0 +1,31 @@
+.grid-container {
+  display: grid;
+  // 5x4 grid (row x col)
+  // fr is a fractional unit
+  grid-template: repeat(5, auto) / minmax(1em, 15%) auto minmax(1em, 15%);
+
+  // Set the positions of each grid item within the grid template
+  app-header {
+    // row start / col start / row end / col end
+    grid-area: 1 / 2 / 1 / 2;
+  }
+
+  app-goal-list {
+    grid-area: 2 / 2 / 2 / 2;
+  }
+
+  main {
+    grid-area: 3 / 2 / 3 / 2;
+  }
+}
+
+.main-flex-container {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem;
+
+  app-task-list,
+  app-free-time {
+    flex: 1;
+  }
+}

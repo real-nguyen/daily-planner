@@ -10,13 +10,13 @@ import { TasksService } from '../tasks.service';
 })
 export class AddTaskComponent {
   types = [
-    { value: "priority", label: "Priority" },
-    { value: "recurrent", label: "Recurrent" },
-    { value: "free-time", label: "Free Time" }
+    { value: 'priority', label: 'Priority' },
+    { value: 'recurrent', label: 'Recurrent' },
+    { value: 'free-time', label: 'Free Time' }
   ];
   id: string;
   task: string;
-  type = "priority";
+  type = 'priority';
   hoursRequired: number;
   done: boolean;
   note: string;
@@ -37,10 +37,6 @@ export class AddTaskComponent {
       }
     }
 
-  onCancelClick() {
-    this.dialogRef.close();
-  }
-
   addTask(form: NgForm) {
     if (form.invalid) {
       return;
@@ -53,7 +49,7 @@ export class AddTaskComponent {
       note: form.value.note
     };
 
-    if (data.type !== 'Free Time') {
+    if (data.type !== 'free-time') {
       data.hoursRequired = form.value.hoursRequired;
       if (this.mode === 'edit') {
         data.done = form.value.done;

@@ -1,6 +1,6 @@
 <div class="{{task.type}} task-flex-container">
   <input type="checkbox" [(ngModel)]="task.done" (change)="onCheck($event, task.id)">
   <span [ngClass]="{'done' : task.done}" class="task" (click)="editTask(task)">{{ task.task }}</span>
-  <span class="hours-required" (click)="editTask(task)">{{ task.hoursRequired }}h</span>
+  <span [ngClass]="{'done' : task.done}" class="hours-required" (click)="editTask(task)">{{ task.hoursRequired }}h</span>
   <fa-icon [icon]="faTimes" (click)="deleteTask(task.id)"></fa-icon>
 </div>
